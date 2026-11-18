@@ -1,0 +1,25 @@
+{
+  "name": "schnittpunkt-terminbuchung",
+  "version": "1.0.0",
+  "description": "Online-Terminbuchung für den Friseursalon Schnittpunkt (Express, MySQL, Vanilla JS)",
+  "main": "src/server.js",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "db:init": "node scripts/db-init.js",
+    "passwort-hash": "node scripts/passwort-hash.js",
+    "test": "node --test --test-concurrency=1 \"tests/**/*.test.js\""
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.3.0",
+    "helmet": "^8.3.0",
+    "mysql2": "^3.24.6",
+    "nodemailer": "10.3.1"
+  }
+}

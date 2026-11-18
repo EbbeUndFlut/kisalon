@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Termin buchen – Friseursalon Schnittpunkt</title>
+  <meta name="description" content="Online einen Termin im Friseursalon Schnittpunkt buchen.">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/buchung.js"></script>
+</head>
+<body>
+  <header class="kopf">
+    <div class="kopf-innen">
+      <a class="logo" href="/">Schnitt<span>punkt</span></a>
+      <nav class="navigation" aria-label="Hauptnavigation">
+        <a href="/" aria-current="page">Termin buchen</a>
+        <a href="/storno">Termin stornieren</a>
+        <a href="/salon">Salon-Bereich</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="seite">
+    <section id="buchung-bereich" aria-labelledby="titel">
+      <h1 id="titel">Termin online buchen</h1>
+      <p class="untertitel" id="oeffnungszeiten-text">Dienstag bis Freitag 9–18 Uhr, Samstag 9–14 Uhr</p>
+
+      <ol class="schritte" id="schritte" aria-label="Fortschritt">
+        <li data-schritt="1"><span class="schritt-nr">1</span><span class="schritt-text">Leistung</span></li>
+        <li data-schritt="2"><span class="schritt-nr">2</span><span class="schritt-text">Person</span></li>
+        <li data-schritt="3"><span class="schritt-nr">3</span><span class="schritt-text">Zeit</span></li>
+        <li data-schritt="4"><span class="schritt-nr">4</span><span class="schritt-text">Ihre Daten</span></li>
+      </ol>
+
+      <div id="lade-meldung" class="meldung meldung-info" role="status">Angebot wird geladen …</div>
+
+      <div class="buchung" id="buchung" hidden>
+        <div>
+          <section class="abschnitt" aria-labelledby="t-leistung">
+            <h2 class="abschnitt-titel" id="t-leistung">1 · Leistung</h2>
+            <p class="abschnitt-hinweis" id="leistung-hinweis">Mehrere Leistungen in einem Termin möglich, z. B. Herrenschnitt + Bartpflege.</p>
+            <div class="leistungen" id="leistungen"></div>
+          </section>
+
+          <section class="abschnitt" aria-labelledby="t-person">
+            <h2 class="abschnitt-titel" id="t-person">2 · Person</h2>
+            <div class="chips" id="personen" role="group" aria-labelledby="t-person"></div>
+          </section>
+
+          <section class="abschnitt" aria-labelledby="t-zeit">
+            <h2 class="abschnitt-titel" id="t-zeit">3 · Datum und Uhrzeit</h2>
+            <div class="datumswahl">
+              <button type="button" class="knopf knopf-leise" id="tag-zurueck" aria-label="Vorheriger Öffnungstag">‹</button>
+              <label class="nur-screenreader" for="datum">Datum</label>
+              <input type="date" id="datum">
+              <button type="button" class="knopf knopf-leise" id="tag-weiter" aria-label="Nächster Öffnungstag">›</button>
+              <span class="tag-name" id="tag-name" aria-live="polite"></span>
+            </div>
+            <div id="zeiten-bereich" aria-live="polite"></div>
+          </section>
+        </div>
+
+        <aside class="karte zusammenfassung" aria-labelledby="t-buchung">
+          <h2 class="abschnitt-titel" id="t-buchung">Ihre Buchung</h2>
+          <dl>
+            <dt>Leistung</dt><dd id="z-leistung">–</dd>
+            <dt>Person</dt><dd id="z-person">egal</dd>
+            <dt>Termin</dt><dd id="z-termin">–</dd>
+            <dt>Dauer</dt><dd id="z-dauer">–</dd>
+          </dl>
+          <div class="preis-zeile"><span>Preis</span><span id="z-preis">–</span></div>
+
+          <form id="formular" novalidate>
+            <div id="formular-meldung" hidden></div>
+            <label class="feld"><span>Name</span>
+              <input type="text" name="name" autocomplete="name" required minlength="2" maxlength="100">
+            </label>
+            <label class="feld"><span>Telefon</span>
+              <input type="tel" name="telefon" autocomplete="tel" required maxlength="30" placeholder="z. B. 0151 1234567">
+            </label>
+            <label class="feld"><span>E-Mail</span>
+              <input type="email" name="email" autocomplete="email" required maxlength="254">
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="merken" checked>
+              <span>Kontaktdaten auf diesem Gerät für die nächste Buchung merken</span>
+            </label>
+            <button type="submit" class="knopf knopf-breit" id="buchen" disabled>Termin verbindlich buchen</button>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section id="bestaetigung" class="karte bestaetigung" hidden aria-labelledby="b-titel" tabindex="-1">
+      <div class="haken" aria-hidden="true">✓</div>
+      <h1 id="b-titel">Ihr Termin ist gebucht</h1>
+      <p class="untertitel">Eine Bestätigung wurde an <strong id="b-email"></strong> geschickt.</p>
+      <dl class="details" id="b-details"></dl>
+      <div class="code-box">
+        <strong>Ihr Stornocode</strong>
+        <code id="b-code"></code>
+        <button type="button" class="knopf knopf-leise knopf-klein" id="b-kopieren">Code kopieren</button>
+        <p class="untertitel" id="b-storno-hinweis"></p>
+      </div>
+      <div class="knopfreihe">
+        <a class="knopf knopf-leise" id="b-storno-link" href="/storno">Termin verwalten</a>
+        <a class="knopf" href="/">Weiteren Termin buchen</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fuss">
+    Friseursalon Schnittpunkt · Kurzfristige Termine (unter 2 Stunden) und Änderungen bitte telefonisch.
+  </footer>
+</body>
+</html>

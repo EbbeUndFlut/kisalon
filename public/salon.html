@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Salon-Bereich – Friseursalon Schnittpunkt</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/salon.js"></script>
+</head>
+<body>
+  <header class="kopf">
+    <div class="kopf-innen">
+      <a class="logo" href="/">Schnitt<span>punkt</span></a>
+      <nav class="navigation" aria-label="Hauptnavigation">
+        <a href="/">Termin buchen</a>
+        <a href="/storno">Termin stornieren</a>
+        <a href="/salon" aria-current="page">Salon-Bereich</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="seite">
+    <p id="lade-meldung" class="meldung meldung-info" role="status">Wird geladen …</p>
+
+    <!-- Anmeldung -->
+    <section id="login-bereich" class="karte login" hidden aria-labelledby="login-titel">
+      <h1 id="login-titel">Salon-Bereich</h1>
+      <p class="untertitel">Bitte mit dem gemeinsamen Passwort für das Team anmelden.</p>
+      <form id="login-formular" novalidate>
+        <div id="login-meldung" hidden></div>
+        <label class="feld"><span>Passwort</span>
+          <input type="password" name="passwort" autocomplete="current-password" required>
+        </label>
+        <button type="submit" class="knopf knopf-breit">Anmelden</button>
+      </form>
+    </section>
+
+    <!-- Angemeldeter Bereich -->
+    <section id="app-bereich" hidden>
+      <div class="salon-kopf">
+        <h1>Salon-Bereich</h1>
+        <button type="button" class="knopf knopf-leise" id="abmelden">Abmelden</button>
+      </div>
+
+      <div class="reiter" role="tablist" aria-label="Ansichten">
+        <button type="button" role="tab" id="reiter-tag" aria-controls="ansicht" data-ansicht="tag">Tag</button>
+        <button type="button" role="tab" id="reiter-woche" aria-controls="ansicht" data-ansicht="woche">Woche</button>
+        <button type="button" role="tab" id="reiter-leistungen" aria-controls="ansicht" data-ansicht="leistungen">Leistungen</button>
+        <button type="button" role="tab" id="reiter-freie-tage" aria-controls="ansicht" data-ansicht="freie-tage">Freie Tage</button>
+        <button type="button" role="tab" id="reiter-auswertung" aria-controls="ansicht" data-ansicht="auswertung">Auswertung</button>
+      </div>
+
+      <div id="app-meldung" hidden></div>
+      <div id="ansicht" role="tabpanel"></div>
+    </section>
+  </main>
+
+  <dialog id="termin-dialog" aria-labelledby="dialog-titel">
+    <div class="dialog-inhalt" id="dialog-inhalt"></div>
+  </dialog>
+</body>
+</html>

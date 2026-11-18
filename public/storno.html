@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Termin stornieren – Friseursalon Schnittpunkt</title>
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="module" src="/js/storno.js"></script>
+</head>
+<body>
+  <header class="kopf">
+    <div class="kopf-innen">
+      <a class="logo" href="/">Schnitt<span>punkt</span></a>
+      <nav class="navigation" aria-label="Hauptnavigation">
+        <a href="/">Termin buchen</a>
+        <a href="/storno" aria-current="page">Termin stornieren</a>
+        <a href="/salon">Salon-Bereich</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="seite seite-schmal">
+    <h1>Termin stornieren</h1>
+    <p class="untertitel" id="frist-text">Sie können Ihren Termin bis 24 Stunden vor Beginn selbst stornieren. Danach rufen Sie uns bitte an.</p>
+
+    <form id="code-formular" class="karte" novalidate>
+      <div id="code-meldung" hidden></div>
+      <label class="feld"><span>Stornocode aus Ihrer Bestätigung</span>
+        <input type="text" name="code" id="code" required autocomplete="off" spellcheck="false"
+               placeholder="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx" maxlength="40">
+      </label>
+      <button type="submit" class="knopf">Termin anzeigen</button>
+    </form>
+
+    <section id="termin" class="karte" hidden aria-live="polite">
+      <h2 id="termin-titel">Ihr Termin</h2>
+      <dl class="details" id="termin-details"></dl>
+      <div id="termin-meldung" hidden></div>
+      <div class="formular-knoepfe" id="termin-aktionen"></div>
+    </section>
+  </main>
+</body>
+</html>
